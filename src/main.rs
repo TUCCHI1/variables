@@ -1,14 +1,27 @@
+use std::io;
+
 fn main() {
-    let x = 5;
-    let x  = x + 1;
+    let a = [1,2,3,4,5];
+    println!("Please enter an array index.");
+        // 配列の何番目の要素にアクセスするか指定してください
 
-    {
-        let x = x * 2;
-        println!("The value of x in the inner scope is: {}", x);
-    }
+    let mut index = String::new();
 
-    println!("The value of x is: {}", x);
+    io::stdin()
+        .read_line(&mut index)
+        .expect("Failed to read line");
+            // あたいの読み込みに失敗しました
 
-    let mut spaces = "   ";
-    spaces = "ddd"
+    let index: usize = index
+        .trim()
+        .parse()
+        .expect("Index entered was not a number");
+
+    let element = a[index];
+
+    println!(
+        "The value of the element at index {} is: {}",
+        // {}番目の要素の値は{}です
+        index, element
+    );
 }
